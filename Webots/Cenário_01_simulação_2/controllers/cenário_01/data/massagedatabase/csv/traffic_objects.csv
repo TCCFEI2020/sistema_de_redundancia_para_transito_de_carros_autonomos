@@ -1,0 +1,4 @@
+﻿checking_factor,type,priority
+A,traffic_light,1
+B,traffic_plates,2
+C,other,3

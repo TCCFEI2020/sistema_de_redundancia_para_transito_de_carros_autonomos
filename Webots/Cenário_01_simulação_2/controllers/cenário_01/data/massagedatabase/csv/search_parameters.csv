@@ -1,0 +1,7 @@
+name,type,parameters
+speed_variation,table,velocidade:sv_pos:m/stop:stop:t
+speed_variation,coded,NaN
+steering_control,table,NaN
+steering_control,coded,direcao:st_pos
+traffic_light_status,table,tempo:t_pos:m
+traffic_light_status,coded,status:s_pos

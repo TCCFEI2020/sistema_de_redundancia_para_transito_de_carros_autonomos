@@ -1,0 +1,7 @@
+﻿id,name,type,speed_variation,speed_variation,speed_variation,steering_control,steering_control
+,info,info,active,sv_pos,stop,active,st_pos
+AAA,Parada obrigatória,Regulamentação,TRUE,6_7_8,TRUE,FALSE,xx
+BBB,Velocidade Máxima Permitida,Regulamentação,TRUE,6_7_8,FALSE,FALSE,xx
+CCC,Desvio à  Esquerda,Sinalização de Obras,TRUE,8_9_10,FALSE,TRUE,6_7
+DDD,Animais,Advertência,TRUE,8_9_10,FALSE,TRUE,6_7
+EEE,Passagem obrigatória,Regulamentação,TRUE,8_9_10,TRUE,TRUE,6_7
