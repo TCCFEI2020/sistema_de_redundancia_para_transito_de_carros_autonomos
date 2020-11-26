@@ -1,0 +1,1373 @@
+#VRML_SIM R2020b utf8
+WorldInfo {
+  info [
+    "Autonomous Vehicle Simulation"
+    "The main vehicle uses distance-sensors and a front radar in order to overtake the other vehicles controlled by SUMO."
+  ]
+  title "Highway overtake"
+  ERP 0.6
+  basicTimeStep 10
+  coordinateSystem "NUE"
+  lineScale 1
+  contactProperties [
+    ContactProperties {
+      coulombFriction [
+        8
+      ]
+      softCFM 1e-05
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+    ContactProperties {
+      material2 "CitroenCZeroWheels"
+      coulombFriction [
+        8
+      ]
+      softCFM 1e-05
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+    ContactProperties {
+      material2 "ToyotaPriusWheels"
+      coulombFriction [
+        8
+      ]
+      softCFM 1e-05
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+    ContactProperties {
+      material2 "LincolnMKZWheels"
+      coulombFriction [
+        8
+      ]
+      softCFM 1e-05
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+    ContactProperties {
+      material2 "RangeRoverSportSVRWheels"
+      coulombFriction [
+        8
+      ]
+      softCFM 1e-05
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+    ContactProperties {
+      material2 "TruckWheels"
+      coulombFriction [
+        8
+      ]
+      softCFM 1e-05
+      bumpSound ""
+      rollSound ""
+      slideSound ""
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.0026545331222283313 0.9985434400824856 0.053888326399495916 2.9428085236658164
+  position -6.451861464913734 9.51411678821642 -37.47682995441847
+  near 1
+  follow "vehicle"
+  followSmoothness 0
+  lensFlare LensFlare {
+  }
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Fog {
+  color 0.93 0.96 1
+  visibilityRange 500
+}
+DEF FLOOR Solid {
+  boundingObject Plane {
+  }
+}
+SumoInterface {
+  gui FALSE
+  useNetconvert FALSE
+  radius 250
+  laneChangeDelay 4
+}
+StraightRoadSegment {
+  translation -8.75 0.01 0
+  id "0"
+  width 15
+  numberOfLanes 4
+  numberOfForwardLanes 0
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.25
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  rightBarrier TRUE
+  leftBarrier TRUE
+  length 5000
+}
+DEF Placa_Obras_Limite_Velocidade Robot {
+  translation -9.42 0.429744 127.24
+  rotation 1 0 0 4.07987e-06
+  children [
+    Transform {
+      translation 0 1.9 0
+      children [
+        Emitter {
+          translation 0 0 0.03
+          children [
+            DEF RANGE Transform {
+              translation 0 0.05 0
+              children [
+                Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.8 0.8 0.8
+                    transparency 0.5
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Sphere {
+                    radius 30
+                    subdivision 2
+                  }
+                }
+              ]
+            }
+          ]
+          range 30
+          channel 1
+        }
+        Solid {
+          translation 0 0 -0.023
+          children [
+            Transform {
+              translation 0 -1.899 0.02
+              children [
+                DEF DISPLAY_PLANE Shape {
+                  appearance PBRAppearance {
+                    baseColorMap ImageTexture {
+                      url [
+                        "textures/signs/us/speed_limit_45.jpg"
+                      ]
+                    }
+                    roughness 0.6
+                    metalness 0
+                  }
+                  geometry IndexedFaceSet {
+                    coord Coordinate {
+                      point [
+                        -0.222054 1.57637 -0.080663
+                        -0.230448 1.58117 -0.080663
+                        -0.240849 1.59135 -0.080663
+                        -0.244812 1.60113 -0.080663
+                        -0.244755 2.18898 -0.080663
+                        -0.240757 2.19754 -0.080663
+                        -0.233101 2.20664 -0.080663
+                        -0.220298 2.2124 -0.080663
+                        0.241966 2.21258 -0.080663
+                        0.251497 2.20667 -0.080663
+                        0.260148 2.19722 -0.080663
+                        0.263576 2.18774 -0.080663
+                        0.263537 1.59854 -0.080663
+                        0.258402 1.58984 -0.080663
+                        0.250189 1.58126 -0.080663
+                        0.240292 1.57597 -0.080663
+                      ]
+                    }
+                    texCoord TextureCoordinate {
+                      point [
+                        0.7625 -0.0012, 0.7756 0.0063, 0.7982 0.0376, 0.7597 0.9958, 0.7918 0.9725, 0.7798 0.9868, 0.0012 0.9572, 0.0202 0.9868, 0.0066 0.972, 0.0377 -0.0018, 0.0093 0.0199, 0.0222 0.0065, 0.0012 0.9572, 0.0351 0.9961, 0.0202 0.9868, 0.7981 0.9591, 0.7918 0.9725, 0.7597 0.9958, 0.0377 -0.0018, 0.0013 0.0335, 0.0093 0.0199, 0.0012 0.9572, 0.7597 0.9958, 0.0351 0.9961, 0.7597 0.9958, 0.0012 0.9572, 0.7981 0.9591, 0.7625 -0.0012, 0.7982 0.0376, 0.0377 -0.0018, 0.0377 -0.0018, 0.7982 0.0376, 0.0013 0.0335, 0.7982 0.0376, 0.7981 0.9591, 0.0012 0.9572, 0.7756 0.0063, 0.7919 0.0223, 0.7982 0.0376, 0.0013 0.0335, 0.7982 0.0376, 0.0012 0.9572
+                      ]
+                    }
+                    coordIndex [
+                      0, 1, 3, -1, 7, 5, 6, -1, 11, 9, 10, -1, 15, 13, 14, -1, 11, 8, 9, -1, 4, 5, 7, -1, 15, 12, 13, -1, 11, 7, 8, -1, 7, 11, 4, -1, 0, 3, 15, -1, 15, 3, 12, -1, 3, 4, 11, -1, 1, 2, 3, -1, 12, 3, 11, -1
+                    ]
+                    texCoordIndex [
+                      0, 1, 2, -1, 3, 4, 5, -1, 6, 7, 8, -1, 9, 10, 11, -1, 12, 13, 14, -1, 15, 16, 17, -1, 18, 19, 20, -1, 21, 22, 23, -1, 24, 25, 26, -1, 27, 28, 29, -1, 30, 31, 32, -1, 33, 34, 35, -1, 36, 37, 38, -1, 39, 40, 41, -1
+                    ]
+                  }
+                }
+              ]
+            }
+            Transform {
+              translation 0 0.89 0
+              rotation -0.5773499358549823 0.5773489358550934 -0.5773519358547601 2.0944
+              children [
+                DEF PANEL_BODY Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.8 0.8 0.8
+                    roughness 0.6
+                  }
+                  geometry IndexedFaceSet {
+                    coord Coordinate {
+                      point [
+                        0.57637 0 -0.222054, 0.58117 0 -0.230448, 0.59135 0 -0.240849, 0.60113 0 -0.244812, 1.18898 0 -0.244755, 1.19754 0 -0.240757, 1.20664 0 -0.233101, 1.2124 0 -0.220298, 1.21258 0 0.241966, 1.20667 0 0.251497, 1.19722 0 0.260148, 1.18774 0 0.263576, 0.59854 0 0.263537, 0.58984 0 0.258402, 0.58126 0 0.250189, 0.57597 0 0.240292, 0.57637 0 -0.222054, 0.57637 0.06 -0.222054, 0.58117 0.06 -0.230448, 0.59135 0.06 -0.240849, 0.60113 0.06 -0.244812, 1.18898 0.06 -0.244755, 1.19754 0.06 -0.240757, 1.20664 0.06 -0.233101, 1.2124 0.06 -0.220298, 1.21258 0.06 0.241966, 1.20667 0.06 0.251497, 1.19722 0.06 0.260148, 1.18774 0.06 0.263576, 0.59854 0.06 0.263537, 0.58984 0.06 0.258402, 0.58126 0.06 0.250189, 0.57597 0.06 0.240292, 0.57637 0.06 -0.222054
+                      ]
+                    }
+                    texCoord TextureCoordinate {
+                      point [
+                        0 0, 0 0.0043184305580082, 0 0.010818207023381, 0 0.015530956673859, 0 0.27806669661905, 0 0.28228603660709, 0 0.28759713055184, 0 0.29386700813755, 0 0.50031564285738, 0 0.50532413609744, 0 0.51104592943744, 0 0.51554802686718, 0 0.77868668058394, 0 0.78319843980569, 0 0.78850287181201, 0 0.79351468218629, 0 1, 1 0, 1 0.0043184305580082, 1 0.010818207023381, 1 0.015530956673859, 1 0.27806669661905, 1 0.28228603660709, 1 0.28759713055184, 1 0.29386700813755, 1 0.50031564285738, 1 0.50532413609744, 1 0.51104592943744, 1 0.51554802686718, 1 0.77868668058394, 1 0.78319843980569, 1 0.78850287181201, 1 0.79351468218629, 1 1, 0.277946 1.07637, 0.269552 1.08117, 0.259151 1.09135, 0.255188 1.10113, 0.255245 1.68898, 0.259243 1.69754, 0.266899 1.70664, 0.279702 1.7124, 0.741966 1.71258, 0.751497 1.70667, 0.760148 1.69722, 0.763576 1.68774, 0.763537 1.09854, 0.758402 1.08984, 0.750189 1.08126, 0.740292 1.07597, 0.277946 1.07637
+                      ]
+                    }
+                    coordIndex [
+                      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, -1, 0, 17, 18, 1, -1, 1, 18, 19, 2, -1, 2, 19, 20, 3, -1, 3, 20, 21, 4, -1, 4, 21, 22, 5, -1, 5, 22, 23, 6, -1, 6, 23, 24, 7, -1, 7, 24, 25, 8, -1, 8, 25, 26, 9, -1, 9, 26, 27, 10, -1, 10, 27, 28, 11, -1, 11, 28, 29, 12, -1, 12, 29, 30, 13, -1, 13, 30, 31, 14, -1, 14, 31, 32, 15, -1, 15, 32, 33, 16, -1
+                    ]
+                    texCoordIndex [
+                      34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, -1, 0, 17, 18, 1, -1, 1, 18, 19, 2, -1, 2, 19, 20, 3, -1, 3, 20, 21, 4, -1, 4, 21, 22, 5, -1, 5, 22, 23, 6, -1, 6, 23, 24, 7, -1, 7, 24, 25, 8, -1, 8, 25, 26, 9, -1, 9, 26, 27, 10, -1, 10, 27, 28, 11, -1, 11, 28, 29, 12, -1, 12, 29, 30, 13, -1, 13, 30, 31, 14, -1, 14, 31, 32, 15, -1, 15, 32, 33, 16, -1
+                    ]
+                    creaseAngle 0.8
+                  }
+                }
+              ]
+            }
+          ]
+          name "speed limit panel"
+          model "speed limit panel"
+          boundingObject Transform {
+            translation 0.01 0 -0.03
+            children [
+              Box {
+                size 0.5 0.63 0.06
+              }
+            ]
+          }
+          recognitionColors [
+            1 1 1
+            0.8 0.8 0.8
+          ]
+        }
+      ]
+    }
+    DEF POLE Solid {
+      translation 0 1 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.8 0.8
+            roughness 0.6
+          }
+          geometry DEF POLE_GEOMETRY Cylinder {
+            radius 0.03
+          }
+        }
+      ]
+      boundingObject USE POLE_GEOMETRY
+    }
+  ]
+  name "speed limit"
+  model "sign pole"
+  controller "inicio_obra_controller"
+}
+DEF Fim_Obras_limite_de_velocidade Robot {
+  translation -9.42 0.208233 493.91
+  rotation 1 0 0 4.07987e-06
+  children [
+    Emitter {
+      translation 0 0 0.03
+      children [
+        DEF RANGE Transform {
+          translation 0 0.05 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.8 0.8
+                transparency 0.5
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 30
+                subdivision 2
+              }
+            }
+          ]
+        }
+      ]
+      range 30
+      channel 1
+    }
+    Transform {
+      translation 0 1.9 0
+      children [
+        Solid {
+          translation 0 0 -0.023
+          children [
+            Transform {
+              translation 0 -1.899 0.02
+              children [
+                DEF DISPLAY_PLANE Shape {
+                  appearance PBRAppearance {
+                    baseColorMap ImageTexture {
+                      url [
+                        "textures/signs/us/speed_limit_80.jpg"
+                      ]
+                    }
+                    roughness 0.6
+                    metalness 0
+                  }
+                  geometry IndexedFaceSet {
+                    coord Coordinate {
+                      point [
+                        -0.222054 1.57637 -0.080663
+                        -0.230448 1.58117 -0.080663
+                        -0.240849 1.59135 -0.080663
+                        -0.244812 1.60113 -0.080663
+                        -0.244755 2.18898 -0.080663
+                        -0.240757 2.19754 -0.080663
+                        -0.233101 2.20664 -0.080663
+                        -0.220298 2.2124 -0.080663
+                        0.241966 2.21258 -0.080663
+                        0.251497 2.20667 -0.080663
+                        0.260148 2.19722 -0.080663
+                        0.263576 2.18774 -0.080663
+                        0.263537 1.59854 -0.080663
+                        0.258402 1.58984 -0.080663
+                        0.250189 1.58126 -0.080663
+                        0.240292 1.57597 -0.080663
+                      ]
+                    }
+                    texCoord TextureCoordinate {
+                      point [
+                        0.7625 -0.0012, 0.7756 0.0063, 0.7982 0.0376, 0.7597 0.9958, 0.7918 0.9725, 0.7798 0.9868, 0.0012 0.9572, 0.0202 0.9868, 0.0066 0.972, 0.0377 -0.0018, 0.0093 0.0199, 0.0222 0.0065, 0.0012 0.9572, 0.0351 0.9961, 0.0202 0.9868, 0.7981 0.9591, 0.7918 0.9725, 0.7597 0.9958, 0.0377 -0.0018, 0.0013 0.0335, 0.0093 0.0199, 0.0012 0.9572, 0.7597 0.9958, 0.0351 0.9961, 0.7597 0.9958, 0.0012 0.9572, 0.7981 0.9591, 0.7625 -0.0012, 0.7982 0.0376, 0.0377 -0.0018, 0.0377 -0.0018, 0.7982 0.0376, 0.0013 0.0335, 0.7982 0.0376, 0.7981 0.9591, 0.0012 0.9572, 0.7756 0.0063, 0.7919 0.0223, 0.7982 0.0376, 0.0013 0.0335, 0.7982 0.0376, 0.0012 0.9572
+                      ]
+                    }
+                    coordIndex [
+                      0, 1, 3, -1, 7, 5, 6, -1, 11, 9, 10, -1, 15, 13, 14, -1, 11, 8, 9, -1, 4, 5, 7, -1, 15, 12, 13, -1, 11, 7, 8, -1, 7, 11, 4, -1, 0, 3, 15, -1, 15, 3, 12, -1, 3, 4, 11, -1, 1, 2, 3, -1, 12, 3, 11, -1
+                    ]
+                    texCoordIndex [
+                      0, 1, 2, -1, 3, 4, 5, -1, 6, 7, 8, -1, 9, 10, 11, -1, 12, 13, 14, -1, 15, 16, 17, -1, 18, 19, 20, -1, 21, 22, 23, -1, 24, 25, 26, -1, 27, 28, 29, -1, 30, 31, 32, -1, 33, 34, 35, -1, 36, 37, 38, -1, 39, 40, 41, -1
+                    ]
+                  }
+                }
+              ]
+            }
+            Transform {
+              translation 0 0.89 0
+              rotation -0.5773499358549823 0.5773489358550934 -0.5773519358547601 2.0944
+              children [
+                DEF PANEL_BODY Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.8 0.8 0.8
+                    roughness 0.6
+                  }
+                  geometry IndexedFaceSet {
+                    coord Coordinate {
+                      point [
+                        0.57637 0 -0.222054, 0.58117 0 -0.230448, 0.59135 0 -0.240849, 0.60113 0 -0.244812, 1.18898 0 -0.244755, 1.19754 0 -0.240757, 1.20664 0 -0.233101, 1.2124 0 -0.220298, 1.21258 0 0.241966, 1.20667 0 0.251497, 1.19722 0 0.260148, 1.18774 0 0.263576, 0.59854 0 0.263537, 0.58984 0 0.258402, 0.58126 0 0.250189, 0.57597 0 0.240292, 0.57637 0 -0.222054, 0.57637 0.06 -0.222054, 0.58117 0.06 -0.230448, 0.59135 0.06 -0.240849, 0.60113 0.06 -0.244812, 1.18898 0.06 -0.244755, 1.19754 0.06 -0.240757, 1.20664 0.06 -0.233101, 1.2124 0.06 -0.220298, 1.21258 0.06 0.241966, 1.20667 0.06 0.251497, 1.19722 0.06 0.260148, 1.18774 0.06 0.263576, 0.59854 0.06 0.263537, 0.58984 0.06 0.258402, 0.58126 0.06 0.250189, 0.57597 0.06 0.240292, 0.57637 0.06 -0.222054
+                      ]
+                    }
+                    texCoord TextureCoordinate {
+                      point [
+                        0 0, 0 0.0043184305580082, 0 0.010818207023381, 0 0.015530956673859, 0 0.27806669661905, 0 0.28228603660709, 0 0.28759713055184, 0 0.29386700813755, 0 0.50031564285738, 0 0.50532413609744, 0 0.51104592943744, 0 0.51554802686718, 0 0.77868668058394, 0 0.78319843980569, 0 0.78850287181201, 0 0.79351468218629, 0 1, 1 0, 1 0.0043184305580082, 1 0.010818207023381, 1 0.015530956673859, 1 0.27806669661905, 1 0.28228603660709, 1 0.28759713055184, 1 0.29386700813755, 1 0.50031564285738, 1 0.50532413609744, 1 0.51104592943744, 1 0.51554802686718, 1 0.77868668058394, 1 0.78319843980569, 1 0.78850287181201, 1 0.79351468218629, 1 1, 0.277946 1.07637, 0.269552 1.08117, 0.259151 1.09135, 0.255188 1.10113, 0.255245 1.68898, 0.259243 1.69754, 0.266899 1.70664, 0.279702 1.7124, 0.741966 1.71258, 0.751497 1.70667, 0.760148 1.69722, 0.763576 1.68774, 0.763537 1.09854, 0.758402 1.08984, 0.750189 1.08126, 0.740292 1.07597, 0.277946 1.07637
+                      ]
+                    }
+                    coordIndex [
+                      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, -1, 0, 17, 18, 1, -1, 1, 18, 19, 2, -1, 2, 19, 20, 3, -1, 3, 20, 21, 4, -1, 4, 21, 22, 5, -1, 5, 22, 23, 6, -1, 6, 23, 24, 7, -1, 7, 24, 25, 8, -1, 8, 25, 26, 9, -1, 9, 26, 27, 10, -1, 10, 27, 28, 11, -1, 11, 28, 29, 12, -1, 12, 29, 30, 13, -1, 13, 30, 31, 14, -1, 14, 31, 32, 15, -1, 15, 32, 33, 16, -1
+                    ]
+                    texCoordIndex [
+                      34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, -1, 0, 17, 18, 1, -1, 1, 18, 19, 2, -1, 2, 19, 20, 3, -1, 3, 20, 21, 4, -1, 4, 21, 22, 5, -1, 5, 22, 23, 6, -1, 6, 23, 24, 7, -1, 7, 24, 25, 8, -1, 8, 25, 26, 9, -1, 9, 26, 27, 10, -1, 10, 27, 28, 11, -1, 11, 28, 29, 12, -1, 12, 29, 30, 13, -1, 13, 30, 31, 14, -1, 14, 31, 32, 15, -1, 15, 32, 33, 16, -1
+                    ]
+                    creaseAngle 0.8
+                  }
+                }
+              ]
+            }
+          ]
+          name "speed limit panel"
+          model "speed limit panel"
+          boundingObject Transform {
+            translation 0.01 0 -0.03
+            children [
+              Box {
+                size 0.5 0.63 0.06
+              }
+            ]
+          }
+          recognitionColors [
+            1 1 1
+            0.8 0.8 0.8
+          ]
+        }
+      ]
+    }
+    DEF POLE Solid {
+      translation 0 1 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.8 0.8
+            roughness 0.6
+          }
+          geometry DEF POLE_GEOMETRY Cylinder {
+            radius 0.03
+          }
+        }
+      ]
+      boundingObject USE POLE_GEOMETRY
+    }
+  ]
+  name "speed limit(1)"
+  model "sign pole"
+  controller "placa_fim_obras_controller"
+}
+DEF palca_limite_velocidade_sentido_contrario Robot {
+  translation 16.3272 0.207364 704.989
+  rotation -2.68563e-07 1 2.03993e-06 -2.8797953071795863
+  children [
+    Emitter {
+      translation 0 0 0.03
+      children [
+        DEF RANGE Transform {
+          translation 0 0.05 0
+          children [
+            Shape {
+              appearance PBRAppearance {
+                baseColor 0.8 0.8 0.8
+                transparency 0.5
+                roughness 1
+                metalness 0
+              }
+              geometry Sphere {
+                radius 30
+                subdivision 2
+              }
+            }
+          ]
+        }
+      ]
+      range 30
+      channel 1
+    }
+    Transform {
+      translation 0 1.9 0
+      children [
+        Solid {
+          translation 0 0 -0.023
+          children [
+            Transform {
+              translation 0 -1.899 0.02
+              children [
+                DEF DISPLAY_PLANE Shape {
+                  appearance PBRAppearance {
+                    baseColorMap ImageTexture {
+                      url [
+                        "textures/signs/us/speed_limit_60.jpg"
+                      ]
+                    }
+                    roughness 0.6
+                    metalness 0
+                  }
+                  geometry IndexedFaceSet {
+                    coord Coordinate {
+                      point [
+                        -0.222054 1.57637 -0.080663
+                        -0.230448 1.58117 -0.080663
+                        -0.240849 1.59135 -0.080663
+                        -0.244812 1.60113 -0.080663
+                        -0.244755 2.18898 -0.080663
+                        -0.240757 2.19754 -0.080663
+                        -0.233101 2.20664 -0.080663
+                        -0.220298 2.2124 -0.080663
+                        0.241966 2.21258 -0.080663
+                        0.251497 2.20667 -0.080663
+                        0.260148 2.19722 -0.080663
+                        0.263576 2.18774 -0.080663
+                        0.263537 1.59854 -0.080663
+                        0.258402 1.58984 -0.080663
+                        0.250189 1.58126 -0.080663
+                        0.240292 1.57597 -0.080663
+                      ]
+                    }
+                    texCoord TextureCoordinate {
+                      point [
+                        0.7625 -0.0012, 0.7756 0.0063, 0.7982 0.0376, 0.7597 0.9958, 0.7918 0.9725, 0.7798 0.9868, 0.0012 0.9572, 0.0202 0.9868, 0.0066 0.972, 0.0377 -0.0018, 0.0093 0.0199, 0.0222 0.0065, 0.0012 0.9572, 0.0351 0.9961, 0.0202 0.9868, 0.7981 0.9591, 0.7918 0.9725, 0.7597 0.9958, 0.0377 -0.0018, 0.0013 0.0335, 0.0093 0.0199, 0.0012 0.9572, 0.7597 0.9958, 0.0351 0.9961, 0.7597 0.9958, 0.0012 0.9572, 0.7981 0.9591, 0.7625 -0.0012, 0.7982 0.0376, 0.0377 -0.0018, 0.0377 -0.0018, 0.7982 0.0376, 0.0013 0.0335, 0.7982 0.0376, 0.7981 0.9591, 0.0012 0.9572, 0.7756 0.0063, 0.7919 0.0223, 0.7982 0.0376, 0.0013 0.0335, 0.7982 0.0376, 0.0012 0.9572
+                      ]
+                    }
+                    coordIndex [
+                      0, 1, 3, -1, 7, 5, 6, -1, 11, 9, 10, -1, 15, 13, 14, -1, 11, 8, 9, -1, 4, 5, 7, -1, 15, 12, 13, -1, 11, 7, 8, -1, 7, 11, 4, -1, 0, 3, 15, -1, 15, 3, 12, -1, 3, 4, 11, -1, 1, 2, 3, -1, 12, 3, 11, -1
+                    ]
+                    texCoordIndex [
+                      0, 1, 2, -1, 3, 4, 5, -1, 6, 7, 8, -1, 9, 10, 11, -1, 12, 13, 14, -1, 15, 16, 17, -1, 18, 19, 20, -1, 21, 22, 23, -1, 24, 25, 26, -1, 27, 28, 29, -1, 30, 31, 32, -1, 33, 34, 35, -1, 36, 37, 38, -1, 39, 40, 41, -1
+                    ]
+                  }
+                }
+              ]
+            }
+            Transform {
+              translation 0 0.89 0
+              rotation -0.5773499358549823 0.5773489358550934 -0.5773519358547601 2.0944
+              children [
+                DEF PANEL_BODY Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.8 0.8 0.8
+                    roughness 0.6
+                  }
+                  geometry IndexedFaceSet {
+                    coord Coordinate {
+                      point [
+                        0.57637 0 -0.222054, 0.58117 0 -0.230448, 0.59135 0 -0.240849, 0.60113 0 -0.244812, 1.18898 0 -0.244755, 1.19754 0 -0.240757, 1.20664 0 -0.233101, 1.2124 0 -0.220298, 1.21258 0 0.241966, 1.20667 0 0.251497, 1.19722 0 0.260148, 1.18774 0 0.263576, 0.59854 0 0.263537, 0.58984 0 0.258402, 0.58126 0 0.250189, 0.57597 0 0.240292, 0.57637 0 -0.222054, 0.57637 0.06 -0.222054, 0.58117 0.06 -0.230448, 0.59135 0.06 -0.240849, 0.60113 0.06 -0.244812, 1.18898 0.06 -0.244755, 1.19754 0.06 -0.240757, 1.20664 0.06 -0.233101, 1.2124 0.06 -0.220298, 1.21258 0.06 0.241966, 1.20667 0.06 0.251497, 1.19722 0.06 0.260148, 1.18774 0.06 0.263576, 0.59854 0.06 0.263537, 0.58984 0.06 0.258402, 0.58126 0.06 0.250189, 0.57597 0.06 0.240292, 0.57637 0.06 -0.222054
+                      ]
+                    }
+                    texCoord TextureCoordinate {
+                      point [
+                        0 0, 0 0.0043184305580082, 0 0.010818207023381, 0 0.015530956673859, 0 0.27806669661905, 0 0.28228603660709, 0 0.28759713055184, 0 0.29386700813755, 0 0.50031564285738, 0 0.50532413609744, 0 0.51104592943744, 0 0.51554802686718, 0 0.77868668058394, 0 0.78319843980569, 0 0.78850287181201, 0 0.79351468218629, 0 1, 1 0, 1 0.0043184305580082, 1 0.010818207023381, 1 0.015530956673859, 1 0.27806669661905, 1 0.28228603660709, 1 0.28759713055184, 1 0.29386700813755, 1 0.50031564285738, 1 0.50532413609744, 1 0.51104592943744, 1 0.51554802686718, 1 0.77868668058394, 1 0.78319843980569, 1 0.78850287181201, 1 0.79351468218629, 1 1, 0.277946 1.07637, 0.269552 1.08117, 0.259151 1.09135, 0.255188 1.10113, 0.255245 1.68898, 0.259243 1.69754, 0.266899 1.70664, 0.279702 1.7124, 0.741966 1.71258, 0.751497 1.70667, 0.760148 1.69722, 0.763576 1.68774, 0.763537 1.09854, 0.758402 1.08984, 0.750189 1.08126, 0.740292 1.07597, 0.277946 1.07637
+                      ]
+                    }
+                    coordIndex [
+                      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, -1, 0, 17, 18, 1, -1, 1, 18, 19, 2, -1, 2, 19, 20, 3, -1, 3, 20, 21, 4, -1, 4, 21, 22, 5, -1, 5, 22, 23, 6, -1, 6, 23, 24, 7, -1, 7, 24, 25, 8, -1, 8, 25, 26, 9, -1, 9, 26, 27, 10, -1, 10, 27, 28, 11, -1, 11, 28, 29, 12, -1, 12, 29, 30, 13, -1, 13, 30, 31, 14, -1, 14, 31, 32, 15, -1, 15, 32, 33, 16, -1
+                    ]
+                    texCoordIndex [
+                      34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, -1, 0, 17, 18, 1, -1, 1, 18, 19, 2, -1, 2, 19, 20, 3, -1, 3, 20, 21, 4, -1, 4, 21, 22, 5, -1, 5, 22, 23, 6, -1, 6, 23, 24, 7, -1, 7, 24, 25, 8, -1, 8, 25, 26, 9, -1, 9, 26, 27, 10, -1, 10, 27, 28, 11, -1, 11, 28, 29, 12, -1, 12, 29, 30, 13, -1, 13, 30, 31, 14, -1, 14, 31, 32, 15, -1, 15, 32, 33, 16, -1
+                    ]
+                    creaseAngle 0.8
+                  }
+                }
+              ]
+            }
+          ]
+          name "speed limit panel"
+          model "speed limit panel"
+          boundingObject Transform {
+            translation 0.01 0 -0.03
+            children [
+              Box {
+                size 0.5 0.63 0.06
+              }
+            ]
+          }
+          recognitionColors [
+            1 1 1
+            0.8 0.8 0.8
+          ]
+        }
+      ]
+    }
+    DEF POLE Solid {
+      translation 0 1 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.8 0.8 0.8
+            roughness 0.6
+          }
+          geometry DEF POLE_GEOMETRY Cylinder {
+            radius 0.03
+          }
+        }
+      ]
+      boundingObject USE POLE_GEOMETRY
+    }
+  ]
+  name "speed limit(2)"
+  model "sign pole"
+  controller "placa_sentido_contario_controller"
+}
+StraightRoadSegment {
+  translation -8.75 0.01 0
+  name "road(2)"
+  id "0"
+  width 15
+  numberOfLanes 4
+  numberOfForwardLanes 0
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.25
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  rightBarrier TRUE
+  leftBarrier TRUE
+  length 5000
+}
+StraightRoadSegment {
+  translation -8.75 0.01 0
+  name "road(3)"
+  id "0"
+  width 15
+  numberOfLanes 4
+  numberOfForwardLanes 0
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.25
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  rightBarrier TRUE
+  leftBarrier TRUE
+  length 5000
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 154.388
+  name "traffic cone(6)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 168.348
+  name "traffic cone(1)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 181.738
+  name "traffic cone(8)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 197.888
+  name "traffic cone(9)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 225.668
+  name "traffic cone(10)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 245.828
+  name "traffic cone(11)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 257.918
+  name "traffic cone(12)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 273.108
+  name "traffic cone(13)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 292.058
+  name "traffic cone(14)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 313.148
+  name "traffic cone(15)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 336.408
+  name "traffic cone(16)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 370.278
+  name "traffic cone(17)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 391.358
+  name "traffic cone(18)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 412.268
+  name "traffic cone(19)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 428.798
+  name "traffic cone(20)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 444.048
+  name "traffic cone(21)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 461.068
+  name "traffic cone(22)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 475.968
+  name "traffic cone(23)"
+}
+TrafficCone {
+  translation -8.74382 -2.66454e-14 493.718
+  name "traffic cone(24)"
+}
+TrafficCone {
+  translation -9.4738171 -2.6645353e-14 127.19847
+  name "traffic cone(7)"
+}
+TrafficCone {
+  translation -8.71382 -2.66454e-14 146.268
+  name "traffic cone(5)"
+}
+TrafficCone {
+  translation -8.68382 -2.66454e-14 137.968
+  name "traffic cone(4)"
+}
+StraightRoadSegment {
+  translation 8.75 0.01 5000
+  rotation 0 1 0 3.1415927
+  name "road(1)"
+  id "1"
+  width 15
+  numberOfLanes 4
+  numberOfForwardLanes 0
+  lines [
+    RoadLine {
+      type "continuous"
+      width 0.25
+    }
+  ]
+  rightBorder FALSE
+  leftBorder FALSE
+  rightBarrier TRUE
+  leftBarrier TRUE
+  length 5000
+}
+DEF WEBOTS_VEHICLE0 LincolnMKZ {
+  translation -6.70991015333025 0.3731570331998739 2.5394492351148004
+  rotation 0.9999999993067317 -2.764298220335947e-05 -2.494799081017293e-05 -0.008595548799714449
+  controller "cenário_01"
+  sensorsSlotFront [
+    Receiver {
+      channel 1
+    }
+    DEF FRONT_RIGHT_LIDAR IbeoLux {
+      translation -0.71 0 -0.2251666
+      rotation 0 -1 0 3.9269908
+      name "ibeo 1"
+      useExtendedFieldOfView TRUE
+    }
+    DEF FRONT_LEFT_LIDAR IbeoLux {
+      translation 0.71 0 -0.225
+      rotation 0 -1 0 2.39
+      name "ibeo 2"
+      useExtendedFieldOfView TRUE
+    }
+    DEF FRONT DistanceSensor {
+      translation 0 0.3 -0.14
+      rotation 0 1 0 4.712389
+      name "distance sensor front"
+      lookupTable [
+        0 0 0
+        20 20 0
+      ]
+      numberOfRays 2
+      aperture 0.1
+    }
+    DEF FRONT_RIGHT_0 DistanceSensor {
+      translation -0.64512585 0.3 -0.29286095
+      rotation 0 1 0 4.5814897
+      name "distance sensor front right 0"
+      lookupTable [
+        0 0 0
+        20 20 0
+      ]
+      numberOfRays 2
+      aperture 0.1
+    }
+    DEF FRONT_RIGHT_1 DistanceSensor {
+      translation -0.64512585 0.3 -0.29286095
+      rotation 0 1 0 4.4505903
+      name "distance sensor front right 1"
+      lookupTable [
+        0 0 0
+        15 15 0
+      ]
+      numberOfRays 2
+      aperture 0.1
+    }
+    DEF FRONT_RIGHT_2 DistanceSensor {
+      translation -0.64512585 0.3 -0.29286095
+      rotation 0 1 0 4.3196903
+      name "distance sensor front right 2"
+      lookupTable [
+        0 0 0
+        10 10 0
+      ]
+      numberOfRays 2
+      aperture 0.1
+    }
+    DEF FRONT_LEFT_0 DistanceSensor {
+      translation 0.650126 0.3 -0.28420069
+      rotation 0 1 0 4.8432897
+      name "distance sensor front left 0"
+      lookupTable [
+        0 0 0
+        20 20 0
+      ]
+      numberOfRays 2
+      aperture 0.1
+    }
+    DEF FRONT_LEFT_1 DistanceSensor {
+      translation 0.650126 0.3 -0.28420069
+      rotation 0 1 0 4.9741897
+      name "distance sensor front left 1"
+      lookupTable [
+        0 0 0
+        15 15 0
+      ]
+      numberOfRays 2
+      aperture 0.1
+    }
+    DEF FRONT_LEFT_2 DistanceSensor {
+      translation 0.650126 0.3 -0.28420069
+      rotation 0 1 0 5.1050897
+      name "distance sensor front left 2"
+      lookupTable [
+        0 0 0
+        10 10 0
+      ]
+      numberOfRays 2
+      aperture 0.1
+    }
+  ]
+  sensorsSlotRear [
+    DEF REAR DistanceSensor {
+      translation 0 0.3 0
+      rotation 0 1 0 4.712389
+      name "distance sensor rear"
+      lookupTable [
+        0 0 0
+        10 10 0
+      ]
+      numberOfRays 2
+      aperture 0.2
+    }
+    DEF REAR_LEFT DistanceSensor {
+      translation -0.70512585 0.3 -0.1889379
+      rotation 0 1 0 4.1887902
+      name "distance sensor rear left"
+      lookupTable [
+        0 0 0
+        10 10 0
+      ]
+      numberOfRays 2
+      aperture 0.2
+    }
+    DEF REAR_RIGHT DistanceSensor {
+      translation 0.705126 0.3 -0.1889379
+      rotation 0 -1 0 1.0471975
+      name "distance sensor rear right"
+      lookupTable [
+        0 0 0
+        10 10 0
+      ]
+      numberOfRays 2
+      aperture 0.2
+    }
+    DEF REAR_LEFT_LIDAR IbeoLux {
+      translation -0.745 0 -0.16454482
+      rotation 0 1 0 2.42
+      name "ibeo 3"
+      useExtendedFieldOfView TRUE
+    }
+    DEF REAR_RIGHT_LIDAR IbeoLux {
+      translation 0.75850978 0 -0.18985653
+      rotation 0 -1 0 2.35
+      name "ibeo 4"
+      useExtendedFieldOfView TRUE
+    }
+  ]
+  sensorsSlotTop [
+    DEF TOP_CAMERA Camera {
+      translation 0 0 -0.48
+      width 512
+      height 256
+      near 1
+      far 1000
+      motionBlur 200
+      recognition Recognition {
+      }
+      lensFlare LensFlare {
+      }
+    }
+  ]
+  sensorsSlotCenter [
+    Display {
+      width 200
+      height 150
+    }
+    DEF RIGHT DistanceSensor {
+      translation 0.9 0.3 -1.32
+      name "distance sensor right"
+      lookupTable [
+        0 0 0
+        4 4 0
+      ]
+      numberOfRays 2
+      aperture 0.9
+    }
+    DEF LEFT DistanceSensor {
+      translation -0.9 0.3 -1.32
+      rotation 0 1 0 3.1415926
+      name "distance sensor left"
+      lookupTable [
+        0 0 0
+        4 4 0
+      ]
+      numberOfRays 2
+      aperture 0.9
+    }
+    GPS {
+      translation 0 0 -5.03
+    }
+  ]
+}
+DEF WEBOTS_VEHICLE1 RangeRoverSportSVRSimple {
+  translation -10.3645 0.4 137.443
+  rotation 0 -1 0 0.26179941
+  name "vehicle(1)"
+}
+TrafficCone {
+  translation -12.182304 1.7941203e-13 118.18033
+  rotation -3.589793e-09 -1 4.6783094e-09 4.9741884
+}
+TrafficCone {
+  translation -8.63382 -2.66454e-14 131.118
+  name "traffic cone(3)"
+}
+TrafficCone {
+  translation -10.584217 3.5527136e-15 122.40328
+  name "traffic cone(2)"
+}
+DEF WEBOTS_VEHICLE2 Solid {
+  translation -10.36436 0 114.07405
+  name "solid(1)"
+}
+HighwayPole {
+  translation -16 0 215
+  rotation 0 1 0 1.5707997
+  stand 2
+  height 7
+  length 31
+  thickness 0.35
+  curveRadius 0.5
+  rightHorizontalSigns [
+    HighwaySign {
+      translation 0 0 5.35
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  rightVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(1)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+  leftHorizontalSigns [
+    HighwaySign {
+      translation 0 0 -17.5
+      name "highway sign(2)"
+      height 3.5
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  leftVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(3)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+}
+HighwayPole {
+  translation -16 0 600
+  rotation 0 1 0 1.5707997
+  name "highway pole(1)"
+  stand 2
+  height 7
+  length 31
+  thickness 0.35
+  curveRadius 0.5
+  rightHorizontalSigns [
+    HighwaySign {
+      translation 0 0 5.35
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  rightVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(1)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+  leftHorizontalSigns [
+    HighwaySign {
+      translation 0 0 -17.5
+      name "highway sign(2)"
+      height 3.5
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  leftVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(3)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+}
+HighwayPole {
+  translation -16 0 1000
+  rotation 0 1 0 1.5707997
+  name "highway pole(2)"
+  stand 2
+  height 7
+  length 31
+  thickness 0.35
+  curveRadius 0.5
+  rightHorizontalSigns [
+    HighwaySign {
+      translation 0 0 5.35
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  rightVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(1)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+  leftHorizontalSigns [
+    HighwaySign {
+      translation 0 0 -17.5
+      name "highway sign(2)"
+      height 3.5
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  leftVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(3)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+}
+HighwayPole {
+  translation -16 0 1400
+  rotation 0 1 0 1.5707997
+  name "highway pole(3)"
+  stand 2
+  height 7
+  length 31
+  thickness 0.35
+  curveRadius 0.5
+  rightHorizontalSigns [
+    HighwaySign {
+      translation 0 0 5.35
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  rightVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(1)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+  leftHorizontalSigns [
+    HighwaySign {
+      translation 0 0 -17.5
+      name "highway sign(2)"
+      height 3.5
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  leftVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(3)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+}
+HighwayPole {
+  translation -16 0 1800
+  rotation 0 1 0 1.5707997
+  name "highway pole(4)"
+  stand 2
+  height 7
+  length 31
+  thickness 0.35
+  curveRadius 0.5
+  rightHorizontalSigns [
+    HighwaySign {
+      translation 0 0 5.35
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  rightVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(1)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+  leftHorizontalSigns [
+    HighwaySign {
+      translation 0 0 -17.5
+      name "highway sign(2)"
+      height 3.5
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  leftVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(3)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+}
+HighwayPole {
+  translation -16 0 2200
+  rotation 0 1 0 1.5707997
+  name "highway pole(5)"
+  stand 2
+  height 7
+  length 31
+  thickness 0.35
+  curveRadius 0.5
+  rightHorizontalSigns [
+    HighwaySign {
+      translation 0 0 5.35
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  rightVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(1)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+  leftHorizontalSigns [
+    HighwaySign {
+      translation 0 0 -17.5
+      name "highway sign(2)"
+      height 3.5
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  leftVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(3)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+}
+HighwayPole {
+  translation -16 0 2600
+  rotation 0 1 0 1.5707997
+  name "highway pole(6)"
+  stand 2
+  height 7
+  length 31
+  thickness 0.35
+  curveRadius 0.5
+  rightHorizontalSigns [
+    HighwaySign {
+      translation 0 0 5.35
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  rightVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(1)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+  leftHorizontalSigns [
+    HighwaySign {
+      translation 0 0 -17.5
+      name "highway sign(2)"
+      height 3.5
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  leftVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(3)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+}
+HighwayPole {
+  translation -16 0 3000
+  rotation 0 1 0 1.5707997
+  name "highway pole(7)"
+  stand 2
+  height 7
+  length 31
+  thickness 0.35
+  curveRadius 0.5
+  rightHorizontalSigns [
+    HighwaySign {
+      translation 0 0 5.35
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  rightVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(1)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+  leftHorizontalSigns [
+    HighwaySign {
+      translation 0 0 -17.5
+      name "highway sign(2)"
+      height 3.5
+      texture [
+        "textures/highway_sign_bayonne.jpg"
+      ]
+    }
+  ]
+  leftVerticalSigns [
+    HighwaySign {
+      translation 0 0.66 0
+      name "highway sign(3)"
+      height 1.7
+      length 3.5
+      texture [
+        "textures/highway_sign_sebastian.jpg"
+      ]
+    }
+  ]
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "textures/ground_grass.jpg"
+          ]
+        }
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          scale 1500 43
+        }
+      }
+      geometry Extrusion {
+        crossSection [
+          60 0, 59 0.061558297, 58 0.24471742, 57 0.54496738, 56 0.95491503, 55 1.4644661, 54 2.0610737, 53 2.7300475, 52 3.454915, 51 4.2178277, 50 5, 49 5.7821723, 48 6.545085, 47 7.2699525, 46 7.9389263, 45 8.5355339, 44 9.045085, 43 9.4550326, 42 9.7552826, 41 9.9384417, 40 10, 39 9.9384417, 38 9.7552826, 37 9.4550326, 36 9.045085, 35 8.5355339, 34 7.9389263, 33 7.2699525, 32 6.545085, 31 5.7821723, 30 5, 29 4.2178277, 28 3.454915, 27 2.7300475, 26 2.0610737, 25 1.4644661, 24 0.95491503, 23 0.54496738, 22 0.24471742, 21 0.061558297, 20 0, -20 0, -21 0.061558297, -22 0.24471742, -23 0.54496738, -24 0.95491503, -25 1.4644661, -26 2.0610737, -27 2.7300475, -28 3.454915, -29 4.2178277, -30 5, -31 5.7821723, -32 6.545085, -33 7.2699525, -34 7.9389263, -35 8.5355339, -36 9.045085, -37 9.4550326, -38 9.7552826, -39 9.9384417, -40 10, -41 9.9384417, -42 9.7552826, -43 9.4550326, -44 9.045085, -45 8.5355339, -46 7.9389263, -47 7.2699525, -48 6.545085, -49 5.7821723, -50 5, -51 4.2178277, -52 3.454915, -53 2.7300475, -54 2.0610737, -55 1.4644661, -56 0.95491503, -57 0.54496738, -58 0.24471742, -59 0.061558297, -60 0
+        ]
+        spine [
+          0 0 0
+          0 0 5000
+        ]
+        beginCap FALSE
+        endCap FALSE
+        ccw FALSE
+        creaseAngle 1.1
+      }
+    }
+  ]
+  name "solid(2)"
+}
+Forest {
+  treesFiles [
+    "forest/highway_overtake/1.forest"
+  ]
+  shape []
+  type "cherry tree"
+  minHeight 4
+  maxRadius 2.5
+  minRadius 1.5
+}
