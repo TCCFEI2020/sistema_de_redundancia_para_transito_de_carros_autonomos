@@ -1,0 +1,5 @@
+id,type,traffic_light_status,traffic_light_status,traffic_light_status,speed_variation,speed_variation,speed_variation
+,info,active,s_pos,t_pos,active,sv_pos,stop
+AAA,Cruzamento,TRUE,11,9_10,TRUE,6_7_9,TRUE
+BBB,Unico,TRUE,11,9_10,TRUE,6_7_9,TRUE
+CCC,Pedestre,TRUE,11,9_10,TRUE,6_7_9,TRUE
