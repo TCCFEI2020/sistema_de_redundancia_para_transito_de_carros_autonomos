@@ -254,10 +254,7 @@ class HandleMessage(object):
 
                 try:
                     key, column = parameter.split(':')
-                    print(key, column)
-                    print(msg_type)
                     path = decoding_path[msg_type]
-                    print(path)
                     df_code = self.get_data(path, index_col=None, header=[0])
                     data = str(msg_row[function_name][column])
                     data = data.split('_')
